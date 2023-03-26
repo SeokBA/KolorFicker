@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct RGB {
+public struct RGB: ColorConvertable {
     @ColorProperty(max: 255) public var red: Double
     @ColorProperty(max: 255) public var green: Double
     @ColorProperty(max: 255) public var blue: Double
@@ -16,5 +16,23 @@ public struct RGB {
         self.red = red
         self.green = green
         self.blue = blue
+    }
+}
+
+public extension RGB {
+    var convertedToHex: HEX {
+        convertedToHex(from: self)
+    }
+    
+    var convertedToCMYK: CMYK {
+        convertedToCMYK(from: self)
+    }
+    
+    var convertedToHSV: HSV {
+        convertedToHSV(from: self)
+    }
+    
+    var convertedToHSL: HSL {
+        convertedToHSL(from: self)
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CMYK {
+public struct CMYK: ColorConvertable {
     @ColorProperty(max: 100) public var cyan: Double
     @ColorProperty(max: 100) public var magenta: Double
     @ColorProperty(max: 100) public var yellow: Double
@@ -22,5 +22,11 @@ public struct CMYK {
         self.magenta = magenta
         self.yellow = yellow
         self.black = black
+    }
+}
+
+public extension CMYK {
+    var convertedToRGB: RGB {
+        convertedToRGB(from: self)
     }
 }

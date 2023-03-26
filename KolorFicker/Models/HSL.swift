@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct HSL {
+public struct HSL: ColorConvertable {
     @ColorProperty(max: 360) public var hue: Double
     @ColorProperty(max: 1) public var saturation: Double
     @ColorProperty(max: 1) public var lightness: Double
@@ -16,5 +16,11 @@ public struct HSL {
         self.hue = hue
         self.saturation = saturation
         self.lightness = lightness
+    }
+}
+
+public extension HSL {
+    var convertedToRGB: RGB {
+        convertedToRGB(from: self)
     }
 }

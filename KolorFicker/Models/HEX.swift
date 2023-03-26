@@ -8,3 +8,5 @@
 import Foundation
 
 public typealias HEX = Int
+
+extension HEX: ColorConvertable {}

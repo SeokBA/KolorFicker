@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct HSV {
+public struct HSV: ColorConvertable {
     @ColorProperty(max: 360) public var hue: Double
     @ColorProperty(max: 1) public var saturation: Double
     @ColorProperty(max: 1) public var value: Double
@@ -16,5 +16,11 @@ public struct HSV {
         self.hue = hue
         self.saturation = saturation
         self.value = value
+    }
+}
+
+public extension HSV {
+    var convertedToRGB: RGB {
+        convertedToRGB(from: self)
     }
 }
