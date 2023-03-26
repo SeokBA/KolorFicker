@@ -38,7 +38,7 @@ extension ColorPickerInteractor: ColorPickerInteractorProtocol {
     
     func inputColorValue(red: Double, green: Double, blue: Double) {
         do {
-            try setColorValue(RGBColorValue(red: red, green: green, blue: blue))
+            try setColorValue(RGB(red: red, green: green, blue: blue))
         } catch {
             print("Input color error: \(error)")
         }
@@ -50,21 +50,21 @@ extension ColorPickerInteractor: ColorPickerInteractorProtocol {
 }
 
 private extension ColorPickerInteractor {
-    func makeRGBColorValue(value: String, type: ColorPickerType) -> RGBColorValue? {
+    func makeRGBColorValue(value: String, type: ColorPickerType) -> RGB? {
         switch type {
         case .hex:
             guard let hexStringValue = value.regexMatch(regex: "[a-fA-F0-9]{6}").first,
                   let hexValue = Int(hexStringValue, radix: 16) else { return nil }
-            return RGBColorValue(red: Double((hexValue >> 16) & 0xFF),
-                                 green: Double((hexValue >> 8) & 0xFF),
-                                 blue: Double(hexValue & 0xFF))
+            return RGB(red: Double((hexValue >> 16) & 0xFF),
+                       green: Double((hexValue >> 8) & 0xFF),
+                       blue: Double(hexValue & 0xFF))
         case .rgb:
             let extractedNumbers = extractNumbers(value)
             guard extractedNumbers.count == 3
             else { return nil }
-            return RGBColorValue(red: min(extractedNumbers[0], 255),
-                                 green: min(extractedNumbers[1], 255),
-                                 blue: min(extractedNumbers[2], 255))
+            return RGB(red: min(extractedNumbers[0], 255),
+                       green: min(extractedNumbers[1], 255),
+                       blue: min(extractedNumbers[2], 255))
         case .cmyk:
             let extractedNumbers = extractNumbers(value)
             guard extractedNumbers.count == 4
@@ -96,7 +96,7 @@ private extension ColorPickerInteractor {
         string.regexMatch(regex: "[0-9]+").compactMap(Double.init)
     }
     
-    func setColorValue(_ rgbColorValue: RGBColorValue, inputedValue: String, editedType: ColorPickerType) throws {
+    func setColorValue(_ rgbColorValue: RGB, inputedValue: String, editedType: ColorPickerType) throws {
         let cmyk = convertedToCMYK(r: rgbColorValue.red, g: rgbColorValue.green, b: rgbColorValue.blue)
         let hsv = try convertedToHSV(r: rgbColorValue.red, g: rgbColorValue.green, b: rgbColorValue.blue)
         let hsl = try convertedToHSL(r: rgbColorValue.red, g: rgbColorValue.green, b: rgbColorValue.blue)
@@ -108,7 +108,7 @@ private extension ColorPickerInteractor {
         appState.colorPicker.currentColorString[.hsl] = (editedType != .hsl) ? "\(Int(round(hsl.h)))°, \(Int(round(hsl.s * 100)))%, \(Int(round(hsl.l * 100)))%" : inputedValue
     }
     
-    func setColorValue(_ rgbColorValue: RGBColorValue) throws {
+    func setColorValue(_ rgbColorValue: RGB) throws {
         let cmyk = convertedToCMYK(r: rgbColorValue.red, g: rgbColorValue.green, b: rgbColorValue.blue)
         let hsv = try convertedToHSV(r: rgbColorValue.red, g: rgbColorValue.green, b: rgbColorValue.blue)
         let hsl = try convertedToHSL(r: rgbColorValue.red, g: rgbColorValue.green, b: rgbColorValue.blue)
@@ -123,45 +123,45 @@ private extension ColorPickerInteractor {
 
 // MARK: - Color Converter
 private extension ColorPickerInteractor {
-    func convertedToRGB(c : Double, m : Double, y : Double, k : Double) -> RGBColorValue {
+    func convertedToRGB(c : Double, m : Double, y : Double, k : Double) -> RGB {
         let r = (1 - c) * (1 - k)
         let g = (1 - m) * (1 - k)
         let b = (1 - y) * (1 - k)
-        return RGBColorValue(red: r, green: g, blue: b)
+        return RGB(red: r, green: g, blue: b)
     }
     
-    func convertedToRGB(h : Double, s : Double, v : Double) -> RGBColorValue {
+    func convertedToRGB(h : Double, s : Double, v : Double) -> RGB {
         let c = v * s
         let x = c * (1 - abs((h / 60).truncatingRemainder(dividingBy: 2) - 1))
         let m = v - c
         return convertedToRGB(h: h, c: c, x: x, m: m)
     }
     
-    func convertedToRGB(h : Double, s : Double, l : Double) -> RGBColorValue {
+    func convertedToRGB(h : Double, s : Double, l : Double) -> RGB {
         let c = (1 - abs(2 * l - 1)) * s
         let x = c * (1 - abs((h / 60).truncatingRemainder(dividingBy: 2) - 1))
         let m = l - (c / 2)
         return convertedToRGB(h: h, c: c, x: x, m: m)
     }
     
-    func convertedToRGB(h: Double, c: Double, x: Double, m: Double) -> RGBColorValue {
+    func convertedToRGB(h: Double, c: Double, x: Double, m: Double) -> RGB {
         let tranformedC = (c + m) * 255
         let tranformedX = (x + m) * 255
         let tranformedZero = m * 255
         
         switch(floor(h / 60)) {
         case 0:
-            return RGBColorValue(red: tranformedC, green: tranformedX, blue: tranformedZero)
+            return RGB(red: tranformedC, green: tranformedX, blue: tranformedZero)
         case 1:
-            return RGBColorValue(red: tranformedX, green: tranformedC, blue: tranformedZero)
+            return RGB(red: tranformedX, green: tranformedC, blue: tranformedZero)
         case 2:
-            return RGBColorValue(red: tranformedZero, green: tranformedC, blue: tranformedX)
+            return RGB(red: tranformedZero, green: tranformedC, blue: tranformedX)
         case 3:
-            return RGBColorValue(red: tranformedZero, green: tranformedX, blue: tranformedC)
+            return RGB(red: tranformedZero, green: tranformedX, blue: tranformedC)
         case 4:
-            return RGBColorValue(red: tranformedX, green: tranformedZero, blue: tranformedC)
+            return RGB(red: tranformedX, green: tranformedZero, blue: tranformedC)
         default:
-            return RGBColorValue(red: tranformedC, green: tranformedZero, blue: tranformedX)
+            return RGB(red: tranformedC, green: tranformedZero, blue: tranformedX)
         }
     }
     

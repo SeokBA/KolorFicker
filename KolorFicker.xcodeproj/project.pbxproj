@@ -16,6 +16,11 @@
 		BF9448E828E85D9F000FFB51 /* ScreenColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9448E728E85D9F000FFB51 /* ScreenColorPickerView.swift */; };
 		BF9448EA28E85E7A000FFB51 /* CircleTooltipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9448E928E85E7A000FFB51 /* CircleTooltipButton.swift */; };
 		BF9448EC28E860A6000FFB51 /* RouteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9448EB28E860A6000FFB51 /* RouteInteractor.swift */; };
+		BFB468CD29D07425003085C4 /* HEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB468CC29D07425003085C4 /* HEX.swift */; };
+		BFB468CF29D074BC003085C4 /* ColorProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB468CE29D074BC003085C4 /* ColorProperty.swift */; };
+		BFB468D129D07711003085C4 /* HSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB468D029D07711003085C4 /* HSV.swift */; };
+		BFB468D329D077FE003085C4 /* CMYK.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB468D229D077FE003085C4 /* CMYK.swift */; };
+		BFB468D529D07868003085C4 /* HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB468D429D07868003085C4 /* HSL.swift */; };
 		BFB9546A2855A0E8002784BD /* KolorFickerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB954692855A0E8002784BD /* KolorFickerApp.swift */; };
 		BFB9546C2855A0E8002784BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB9546B2855A0E8002784BD /* ContentView.swift */; };
 		BFB9546E2855A0E9002784BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB9546D2855A0E9002784BD /* Assets.xcassets */; };
@@ -32,7 +37,7 @@
 		BFB954A82855A25F002784BD /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB954A72855A25F002784BD /* Environments.swift */; };
 		BFB954AA2855A287002784BD /* InteractorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB954A92855A287002784BD /* InteractorContainer.swift */; };
 		BFD9B04328ABC5DA00C94F2B /* WindowAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9B04228ABC5DA00C94F2B /* WindowAccessor.swift */; };
-		BFD9B04628ABC7C800C94F2B /* RGBColorValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9B04528ABC7C800C94F2B /* RGBColorValue.swift */; };
+		BFD9B04628ABC7C800C94F2B /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9B04528ABC7C800C94F2B /* RGB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,11 @@
 		BF9448E728E85D9F000FFB51 /* ScreenColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenColorPickerView.swift; sourceTree = "<group>"; };
 		BF9448E928E85E7A000FFB51 /* CircleTooltipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTooltipButton.swift; sourceTree = "<group>"; };
 		BF9448EB28E860A6000FFB51 /* RouteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInteractor.swift; sourceTree = "<group>"; };
+		BFB468CC29D07425003085C4 /* HEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEX.swift; sourceTree = "<group>"; };
+		BFB468CE29D074BC003085C4 /* ColorProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProperty.swift; sourceTree = "<group>"; };
+		BFB468D029D07711003085C4 /* HSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSV.swift; sourceTree = "<group>"; };
+		BFB468D229D077FE003085C4 /* CMYK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMYK.swift; sourceTree = "<group>"; };
+		BFB468D429D07868003085C4 /* HSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSL.swift; sourceTree = "<group>"; };
 		BFB954662855A0E8002784BD /* KolorFicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KolorFicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB954692855A0E8002784BD /* KolorFickerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KolorFickerApp.swift; sourceTree = "<group>"; };
 		BFB9546B2855A0E8002784BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,7 +93,7 @@
 		BFB954A72855A25F002784BD /* Environments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environments.swift; sourceTree = "<group>"; };
 		BFB954A92855A287002784BD /* InteractorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorContainer.swift; sourceTree = "<group>"; };
 		BFD9B04228ABC5DA00C94F2B /* WindowAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowAccessor.swift; sourceTree = "<group>"; };
-		BFD9B04528ABC7C800C94F2B /* RGBColorValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBColorValue.swift; sourceTree = "<group>"; };
+		BFD9B04528ABC7C800C94F2B /* RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +241,12 @@
 		BFD9B04428ABC7B900C94F2B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BFD9B04528ABC7C800C94F2B /* RGBColorValue.swift */,
+				BFB468CE29D074BC003085C4 /* ColorProperty.swift */,
+				BFD9B04528ABC7C800C94F2B /* RGB.swift */,
+				BFB468CC29D07425003085C4 /* HEX.swift */,
+				BFB468D229D077FE003085C4 /* CMYK.swift */,
+				BFB468D029D07711003085C4 /* HSV.swift */,
+				BFB468D429D07868003085C4 /* HSL.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,10 +384,12 @@
 				BF9448EC28E860A6000FFB51 /* RouteInteractor.swift in Sources */,
 				BF7C0D23287967E500473843 /* NSScreen+Extensions.swift in Sources */,
 				BF27824628EA8AFF0014BDFA /* ErrorView.swift in Sources */,
+				BFB468CD29D07425003085C4 /* HEX.swift in Sources */,
 				BFB9549E2855A1D6002784BD /* ColorPickerInteractor.swift in Sources */,
 				BF27824828EA8D780014BDFA /* ToastView.swift in Sources */,
 				BFB954982855A170002784BD /* ColorTextFieldItem.swift in Sources */,
 				BFB954A62855A240002784BD /* String+Regex.swift in Sources */,
+				BFB468CF29D074BC003085C4 /* ColorProperty.swift in Sources */,
 				BF593DBF29081E6400C3F04C /* PickerColorSpace.swift in Sources */,
 				BF9448EA28E85E7A000FFB51 /* CircleTooltipButton.swift in Sources */,
 				BFB954A82855A25F002784BD /* Environments.swift in Sources */,
@@ -380,11 +397,14 @@
 				BF7C0D252879686000473843 /* NSRect+Extensions.swift in Sources */,
 				BFB954962855A141002784BD /* MainView.swift in Sources */,
 				BFB954A12855A200002784BD /* ColorPickerType.swift in Sources */,
+				BFB468D329D077FE003085C4 /* CMYK.swift in Sources */,
 				BFD9B04328ABC5DA00C94F2B /* WindowAccessor.swift in Sources */,
 				BFB9546C2855A0E8002784BD /* ContentView.swift in Sources */,
 				BFB954AA2855A287002784BD /* InteractorContainer.swift in Sources */,
 				BF354EDF2858C01E00AFB870 /* ScreenMonitoringView.swift in Sources */,
-				BFD9B04628ABC7C800C94F2B /* RGBColorValue.swift in Sources */,
+				BFB468D529D07868003085C4 /* HSL.swift in Sources */,
+				BFD9B04628ABC7C800C94F2B /* RGB.swift in Sources */,
+				BFB468D129D07711003085C4 /* HSV.swift in Sources */,
 				BF9448E828E85D9F000FFB51 /* ScreenColorPickerView.swift in Sources */,
 				BFB9546A2855A0E8002784BD /* KolorFickerApp.swift in Sources */,
 			);
